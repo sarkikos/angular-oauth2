@@ -1,0 +1,11 @@
+<div *ngIf="!hasValidTokens">
+    Tokens not available...
+</div>
+
+<div *ngIf="hasValidTokens">
+     Logged in as {{username}}, orcid: {{orcid}}
+     <button (click)="logout()">Logout</button>
+</div>
+
+<router-outlet>
+</router-outlet>
