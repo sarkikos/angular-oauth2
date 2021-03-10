@@ -1,8 +1,9 @@
-<div *ngIf="!hasValidTokens">
-    Tokens not available...
+<div *ngIf="!hasValidAccessToken">
+    Access token not available
+    <button (click)="login()">Login</button>
 </div>
 
-<div *ngIf="hasValidTokens">
+<div *ngIf="hasValidAccessToken">
      Logged in as {{username}}, orcid: {{orcid}}
      <button (click)="logout()">Logout</button>
 </div>

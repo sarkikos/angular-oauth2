@@ -9,20 +9,21 @@ import { filter } from 'rxjs/operators';
 })
 export class AppComponent {
   title = 'angular-oauth2';
-  hasValidTokens: Boolean;
+  hasValidAccessToken: Boolean;
   username: '';
   orcid: '';
 
   constructor(private oauthService: OAuthService) {
-    console.log("App component ctor");
+    console.log("App component constructor");
     this.oauthService.configure(environment.authConfig);
     this.oauthService.loadDiscoveryDocumentAndTryLogin();
-
+    this.oauthService.setupAutomaticSilentRefresh();
     this.setModelFromTokens();
 
     this.oauthService.events
       .pipe(filter(e => e.type === 'token_received'))
       .subscribe(_ => {
+        this.oauthService.loadUserProfile();
         this.setModelFromTokens();
       });
   }
@@ -36,8 +37,8 @@ export class AppComponent {
   }
 
   setModelFromTokens() {
-    this.hasValidTokens = this.oauthService.hasValidIdToken() && this.oauthService.hasValidAccessToken();
-    if (this.hasValidTokens) {
+    this.hasValidAccessToken = this.oauthService.hasValidAccessToken();
+    if (this.oauthService.hasValidIdToken()) {
       var identityClaims = this.oauthService.getIdentityClaims();
       console.log("Identity claims:", identityClaims);
       this.username = identityClaims['name'];
