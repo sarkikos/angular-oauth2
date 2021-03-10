@@ -1,12 +1,7 @@
-<div *ngIf="!hasValidAccessToken">
-    Access token not available
-    <button (click)="login()">Login</button>
+<div>
+    user is authenticated: {{ isAuthenticated$ | async }}
+    <button *ngIf="!(isAuthenticated$ | async)" (click)="login()">login</button>
+    <button *ngIf="isAuthenticated$ | async" (click)="logout()">logout</button>
 </div>
 
-<div *ngIf="hasValidAccessToken">
-     Logged in as {{username}}, orcid: {{orcid}}
-     <button (click)="logout()">Logout</button>
-</div>
-
-<router-outlet>
-</router-outlet>
+<router-outlet></router-outlet>

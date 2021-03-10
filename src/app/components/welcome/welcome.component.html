@@ -1,12 +1,6 @@
-Welcome component
-
-<div *ngIf="hasValidAccessToken">
-    <h3>Profile check / create / delete</h3>
-    <button (click)="checkProfileExists()">Check existence</button>
-    <button (click)="createProfile()">Create profile</button>
-    <button (click)="deleteProfile()">Delete profile</button>
-</div>
-
-<div *ngIf="!hasValidAccessToken">
-    No valid access token.
+<div *ngIf="isAuthenticated$ | async">
+  <h3>Profile check / create / delete</h3>
+  <button (click)="checkProfileExists()">Check existence</button>
+  <button (click)="createProfile()">Create profile</button>
+  <button (click)="deleteProfile()">Delete profile</button>
 </div>

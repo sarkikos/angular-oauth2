@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { OAuthService } from 'angular-oauth2-oidc';
+import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { environment } from '../../environments/environment'
 
 @Injectable({
@@ -12,18 +12,18 @@ export class ProfileService {
 
   constructor(
     private http: HttpClient,
-    private oauthService: OAuthService,
+    public oidcSecurityService: OidcSecurityService,
   ) {
-    this.apiUrl = environment.profileApiUrl + '/api/researcherprofile/';
+    this.apiUrl = environment.profileApiUrl + '/researcherprofile/';
   }
 
   updateTokenInHttpAuthHeader() {
-    var token = this.oauthService.getAccessToken();
+    var token = this.oidcSecurityService.getToken();
 
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
+        'Authorization': `Bearer ${token}`,
       }),
     };
   }
