@@ -9,12 +9,14 @@ import { ProfileService } from '../../services/profile.service';
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent implements OnInit {
-
   isAuthenticated$: Observable<boolean>;
+  userData$: Observable<string>;
+
   constructor(public oidcSecurityService: OidcSecurityService, private profileService: ProfileService) {}
 
   ngOnInit(): void {
     this.isAuthenticated$ = this.oidcSecurityService.isAuthenticated$;
+    this.userData$ = this.oidcSecurityService.userData$;
   }
 
   checkProfileExists() {
