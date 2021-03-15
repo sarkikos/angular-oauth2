@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AppConfigService } from './services/app-config-service.service';
+import { AuthGuard } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AppConfigService } from './services/app-config-service.service';
   ],
   providers: [
     AppConfigService,
+    AuthGuard,
     {
       provide: APP_INITIALIZER,
       multi: true,

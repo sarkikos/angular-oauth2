@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component'
 import { WelcomeComponent } from './components/welcome/welcome.component'
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component'
+import { AuthGuard } from './services/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -16,7 +17,7 @@ const routes: Routes = [
     path: 'welcome',
     pathMatch: 'full',
     component: WelcomeComponent,
-    canActivate: [],
+    canActivate: [AuthGuard],
   },
   {
     path: '**',
