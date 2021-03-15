@@ -46,3 +46,4 @@ Thumbs.db
 environment.ts
 environment.prod.ts
 config.json
+auth_config.json

@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
-import { environment } from '../../environments/environment'
+import { AppConfigService } from './app-config-service.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,9 +12,10 @@ export class ProfileService {
 
   constructor(
     private http: HttpClient,
+    private appConfigService: AppConfigService,
     public oidcSecurityService: OidcSecurityService,
   ) {
-    this.apiUrl = environment.profileApiUrl + '/researcherprofile/';
+    this.apiUrl = this.appConfigService.profileApiUrl + '/researcherprofile/';
   }
 
   updateTokenInHttpAuthHeader() {

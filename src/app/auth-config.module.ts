@@ -6,9 +6,9 @@ import { environment } from '../environments/environment'
 
 
 export function configureAuth(oidcConfigService: OidcConfigService, httpClient: HttpClient) {
-  const setupAction$ = httpClient.get<any>(`assets/config/config.json`).pipe(
-    map((configJson) => {
-      return configJson.authConfig;
+  const setupAction$ = httpClient.get<any>(`assets/config/auth_config.json`).pipe(
+    map((authConfig) => {
+      return authConfig;
     }),
     switchMap((config) => oidcConfigService.withConfig(config))
   );
