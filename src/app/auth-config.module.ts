@@ -4,13 +4,17 @@ import { AuthModule, OidcConfigService, OidcSecurityService, LogLevel } from 'an
 import { map, switchMap } from 'rxjs/operators';
 import { environment } from '../environments/environment'
 
-export function configureAuth(oidcConfigService: OidcConfigService) {
-    const authConfig = environment.authConfig;
-    authConfig['logLevel'] = LogLevel.Debug;
 
-    return () => 
-      oidcConfigService.withConfig(authConfig);
-  }
+export function configureAuth(oidcConfigService: OidcConfigService, httpClient: HttpClient) {
+  const setupAction$ = httpClient.get<any>(`assets/config/config.json`).pipe(
+    map((configJson) => {
+      return configJson.authConfig;
+    }),
+    switchMap((config) => oidcConfigService.withConfig(config))
+  );
+
+  return () => setupAction$.toPromise();
+}
 
 @NgModule({
   imports: [AuthModule.forRoot()],
