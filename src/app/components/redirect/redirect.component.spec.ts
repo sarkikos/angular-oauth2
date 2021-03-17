@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Welcome2Component } from './welcome2.component';
+import { RedirectComponent } from './redirect.component';
 
-describe('Welcome2Component', () => {
-  let component: Welcome2Component;
-  let fixture: ComponentFixture<Welcome2Component>;
+describe('WelcomeComponent', () => {
+  let component: RedirectComponent;
+  let fixture: ComponentFixture<RedirectComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ Welcome2Component ]
+      declarations: [ RedirectComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Welcome2Component);
+    fixture = TestBed.createComponent(RedirectComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

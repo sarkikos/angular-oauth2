@@ -1,8 +1,0 @@
-<div *ngIf="isAuthenticated$ | async">
-  <h3>Kirjautuneena: {{ userData$.source._value.name }}, {{ userData$.source._value.orcid }}</h3>
-
-  <h4>Profile check / create / delete</h4>
-  <button (click)="checkProfileExists()">Check existence</button>
-  <button (click)="createProfile()">Create profile</button>
-  <button (click)="deleteProfile()">Delete profile</button>
-</div>

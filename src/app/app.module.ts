@@ -4,8 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthConfigModule } from './auth-config.module';
 import { LoginComponent } from './components/login/login.component';
+import { RedirectComponent } from './components/redirect/redirect.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
-import { Welcome2Component } from './components/welcome2/welcome2.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AppConfigService } from './services/app-config-service.service';
 import { AuthGuard } from './services/auth-guard.service';
@@ -14,8 +14,8 @@ import { AuthGuard } from './services/auth-guard.service';
   declarations: [
     AppComponent,
     LoginComponent,
+    RedirectComponent,
     WelcomeComponent,
-    Welcome2Component,
     PageNotFoundComponent
   ],
   imports: [
