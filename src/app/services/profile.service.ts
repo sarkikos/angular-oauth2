@@ -15,7 +15,7 @@ export class ProfileService {
     private appConfigService: AppConfigService,
     public oidcSecurityService: OidcSecurityService,
   ) {
-    this.apiUrl = this.appConfigService.profileApiUrl + '/researcherprofile/';
+    this.apiUrl = this.appConfigService.profileApiUrl;
   }
 
   updateTokenInHttpAuthHeader() {
@@ -31,16 +31,32 @@ export class ProfileService {
 
   checkProfileExists() {
     this.updateTokenInHttpAuthHeader();
-    return this.http.get(this.apiUrl, this.httpOptions);
+    return this.http.get(this.apiUrl + '/researcherprofile/', this.httpOptions);
   }
 
   createProfile() {
     this.updateTokenInHttpAuthHeader();
-    return this.http.post(this.apiUrl, null, this.httpOptions);
+    return this.http.post(this.apiUrl + '/researcherprofile/', null, this.httpOptions);
   }
 
   deleteProfile() {
     this.updateTokenInHttpAuthHeader();
-    return this.http.delete(this.apiUrl, this.httpOptions);
+    return this.http.delete(this.apiUrl + '/researcherprofile/', this.httpOptions);
+  }
+
+  getOrcidData() {
+    this.updateTokenInHttpAuthHeader();
+    return this.http.get(this.apiUrl + '/orcid/', this.httpOptions);
+  }
+
+  getProfileData() {
+    this.updateTokenInHttpAuthHeader();
+    return this.http.get(this.apiUrl + '/profiledata/', this.httpOptions);
+  }
+
+  patchProfileDataSingle(modificationItem) {
+    this.updateTokenInHttpAuthHeader();
+    let body = [ modificationItem ];
+    return this.http.patch(this.apiUrl + '/profiledata/', body, this.httpOptions);
   }
 }

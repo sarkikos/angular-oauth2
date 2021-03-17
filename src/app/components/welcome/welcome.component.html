@@ -2,7 +2,34 @@
   <h3>Logged in as: {{ userData$.source._value.name }}, {{ userData$.source._value.orcid }}</h3>
 
   <h4>Profile check / create / delete</h4>
-  <button (click)="checkProfileExists()">Check existence</button>
-  <button (click)="createProfile()">Create profile</button>
-  <button (click)="deleteProfile()">Delete profile</button>
+    <div>
+    <button (click)="checkProfileExists()">Check existence</button>
+    <button (click)="createProfile()">Create profile</button>
+    <button (click)="deleteProfile()">Delete profile</button>
+  </div>
+
+  <h4>ORCID data</h4>
+  <div>
+    Trigger backend to get data from ORCID and store it into database:
+    <button (click)="getOrcidData()">Get data from Orcid</button>
+  </div>
+
+  <h4>Profile editor</h4>
+  <div>
+    Get data for profile editor:
+    <button (click)="getProfileData()">Get data for profile editor</button>
+  </div>
+
+  <div *ngIf="editorData">
+    Toggle property "show":
+    <div *ngFor="let item of editorData; index as i;">
+      {{ item.id }} - <button (click)="patchProfileDataSingle(item)">toggle</button>
+    </div>
+  </div>
+
+  <div>
+    <pre>
+    {{ editorData | json }}
+    </pre>
+  </div>
 </div>

@@ -27,20 +27,4 @@ export class AuthGuard implements CanActivate {
       })
     );
   }
-
-  /*
-  public canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<boolean> {
-      return this.oidcSecurityService.checkAuth().pipe(
-          tap((isAuthenticated) => {
-              if (!isAuthenticated) {
-                  alert("Blocked by AuthGuard");
-                  this.router.navigate(["/"]);
-              }
-          })
-      );
-  }
-  */
 }
