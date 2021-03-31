@@ -23,26 +23,26 @@ export class WelcomeComponent implements OnInit {
   }
 
   checkProfileExists() {
-    this.profileService.checkProfileExists().subscribe((data) => console.log(data));
+    this.profileService.checkProfileExists().subscribe((response) => console.log(response));
   }
 
   createProfile() {
-    this.profileService.createProfile().subscribe((data) => console.log(data));
+    this.profileService.createProfile().subscribe((response) => console.log(response));
   }
 
   deleteProfile() {
-    this.profileService.deleteProfile().subscribe((data) => console.log(data));
+    this.profileService.deleteProfile().subscribe((response) => console.log(response));
   }
 
   getOrcidData() {
-    this.profileService.getOrcidData().subscribe((data) => console.log(data));
+    this.profileService.getOrcidData().subscribe((response) => console.log(response));
   }
 
   getProfileData() {
     this.editorData = null;
-    this.profileService.getProfileData().subscribe((data) => {
-      console.log(data);
-      this.editorData = data;
+    this.profileService.getProfileData().subscribe((response) => {
+      console.log(response);
+      this.editorData = response['data'];
     });
   }
 
@@ -51,6 +51,6 @@ export class WelcomeComponent implements OnInit {
       id: item.id,
       show: !item.show
     };
-    this.profileService.patchProfileDataSingle(patchItem).subscribe((data) => console.log(data));
+    this.profileService.patchProfileDataSingle(patchItem).subscribe((response) => console.log(response));
   }
 }
