@@ -31,17 +31,17 @@ export class ProfileService {
 
   checkProfileExists() {
     this.updateTokenInHttpAuthHeader();
-    return this.http.get(this.apiUrl + '/researcherprofile/', this.httpOptions);
+    return this.http.get(this.apiUrl + '/userprofile/', this.httpOptions);
   }
 
   createProfile() {
     this.updateTokenInHttpAuthHeader();
-    return this.http.post(this.apiUrl + '/researcherprofile/', null, this.httpOptions);
+    return this.http.post(this.apiUrl + '/userprofile/', null, this.httpOptions);
   }
 
   deleteProfile() {
     this.updateTokenInHttpAuthHeader();
-    return this.http.delete(this.apiUrl + '/researcherprofile/', this.httpOptions);
+    return this.http.delete(this.apiUrl + '/userprofile/', this.httpOptions);
   }
 
   getOrcidData() {
