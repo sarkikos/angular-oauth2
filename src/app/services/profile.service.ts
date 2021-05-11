@@ -54,9 +54,15 @@ export class ProfileService {
     return this.http.get(this.apiUrl + '/profiledata/', this.httpOptions);
   }
 
-  patchProfileDataSingle(modificationItem) {
+  patchProfileDataSingleGroup(group) {
     this.updateTokenInHttpAuthHeader();
-    let body = [ modificationItem ];
+    let body = { groups: [group], items: [] };
+    return this.http.patch(this.apiUrl + '/profiledata/', body, this.httpOptions);
+  }
+
+  patchProfileDataSingleItem(item) {
+    this.updateTokenInHttpAuthHeader();
+    let body = { groups: [], items: [item] };
     return this.http.patch(this.apiUrl + '/profiledata/', body, this.httpOptions);
   }
 }

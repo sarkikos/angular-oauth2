@@ -46,11 +46,21 @@ export class WelcomeComponent implements OnInit {
     });
   }
 
-  patchProfileDataSingle(item) {
+  patchProfileDataSingleGroup(group) {
+    let patchGroup = {
+      id: group.id,
+      type: group.type,
+      show: !group.show
+    };
+    this.profileService.patchProfileDataSingleGroup(patchGroup).subscribe((response) => console.log(response));
+  }
+
+  patchProfileDataSingleItem(item) {
     let patchItem = {
       id: item.id,
+      type: item.type,
       show: !item.show
     };
-    this.profileService.patchProfileDataSingle(patchItem).subscribe((response) => console.log(response));
+    this.profileService.patchProfileDataSingleItem(patchItem).subscribe((response) => console.log(response));
   }
 }

@@ -20,12 +20,22 @@
     <button (click)="getProfileData()">Get data for profile editor</button>
   </div>
 
+  <hr>
+
   <div *ngIf="editorData">
-    Toggle property "show":
-    <div *ngFor="let item of editorData; index as i;">
-      {{ item.id }} - <button (click)="patchProfileDataSingle(item)">toggle</button>
+    <h3>Web links</h3>
+    <div *ngFor="let group of editorData.personal.webLinkGroups; index as i;">
+      <button (click)="patchProfileDataSingleGroup(group.groupMeta)">Toggle</button> source: {{ group.dataSource.name }}
+      <ul>
+        <li *ngFor="let item of group.items; index as i;">
+          <button (click)="patchProfileDataSingleItem(item.itemMeta)">Toggle</button>
+          <a href="{{ item.url }}" target="_blank">{{ item.linkLabel }}</a>
+        </li>
+      </ul>
     </div>
   </div>
+
+  <hr>
 
   <div>
     <pre>
