@@ -45,5 +45,5 @@ Thumbs.db
 # Environment
 environment.ts
 environment.prod.ts
-config.json
-auth_config.json
+config*.json
+auth_config*.json
