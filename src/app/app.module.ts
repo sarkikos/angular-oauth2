@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { FormsModule } from '@angular/forms'; 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthConfigModule } from './auth-config.module';
@@ -21,7 +22,8 @@ import { AuthGuard } from './services/auth-guard.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AuthConfigModule
+    AuthConfigModule,
+    FormsModule
   ],
   providers: [
     AppConfigService,

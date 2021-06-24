@@ -65,4 +65,16 @@ export class ProfileService {
     let body = { groups: [], items: [item] };
     return this.http.patch(this.apiUrl + '/profiledata/', body, this.httpOptions);
   }
+
+  addPublication(publicationId) {
+    this.updateTokenInHttpAuthHeader();
+    let body = { publicationId: publicationId };
+    return this.http.post(this.apiUrl + '/publication/', body, this.httpOptions);
+  }
+
+  removePublication(publicationId) {
+    this.updateTokenInHttpAuthHeader();
+    let url = this.apiUrl + '/publication/' + publicationId;
+    return this.http.delete(url, this.httpOptions);
+  }
 }

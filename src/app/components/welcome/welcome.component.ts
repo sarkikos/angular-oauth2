@@ -12,9 +12,11 @@ export class WelcomeComponent implements OnInit {
   isAuthenticated$: Observable<boolean>;
   userData$: Observable<string>;
   editorData: Object;
+  publicationId: String;
 
   constructor(public oidcSecurityService: OidcSecurityService, private profileService: ProfileService) {
     this.editorData = null;
+    this.publicationId = "";
   }
 
   ngOnInit(): void {
@@ -62,5 +64,13 @@ export class WelcomeComponent implements OnInit {
       show: !item.show
     };
     this.profileService.patchProfileDataSingleItem(patchItem).subscribe((response) => console.log(response));
+  }
+
+  addPublication() {
+    this.profileService.addPublication(this.publicationId).subscribe((response) => console.log(response));
+  }
+
+  removePublication() {
+    this.profileService.removePublication(this.publicationId).subscribe((response) => console.log(response));
   }
 }
