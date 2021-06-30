@@ -23,10 +23,13 @@
   <hr>
 
   <div>
-    <h3>Publications</h3>
-    <input type="text" [(ngModel)]="publicationId" />
-    <button (click)="addPublication()">Add publication_id</button>
-    <button (click)="removePublication()">Remove publication_id</button>
+    <h3>Add publications</h3>
+    <input type="text" [(ngModel)]="publicationIdAdd1" title="publicationId" />
+    <input type="text" [(ngModel)]="publicationIdAdd2" title="publicationId" />
+    <button (click)="addPublication()">Add</button>
+    <h3>Remove publication</h3>
+    <input type="text" [(ngModel)]="publicationIdRemove" />
+    <button (click)="removePublication()">Remove</button>
   </div>
 
   <hr>

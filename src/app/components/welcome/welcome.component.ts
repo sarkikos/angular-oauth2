@@ -12,11 +12,15 @@ export class WelcomeComponent implements OnInit {
   isAuthenticated$: Observable<boolean>;
   userData$: Observable<string>;
   editorData: Object;
-  publicationId: String;
+  publicationIdAdd1: String;
+  publicationIdAdd2: String;
+  publicationIdRemove: String;
 
   constructor(public oidcSecurityService: OidcSecurityService, private profileService: ProfileService) {
     this.editorData = null;
-    this.publicationId = "";
+    this.publicationIdAdd1 = "";
+    this.publicationIdAdd1 = "";
+    this.publicationIdRemove = "";
   }
 
   ngOnInit(): void {
@@ -67,10 +71,10 @@ export class WelcomeComponent implements OnInit {
   }
 
   addPublication() {
-    this.profileService.addPublication(this.publicationId).subscribe((response) => console.log(response));
+    this.profileService.addPublication(this.publicationIdAdd1, this.publicationIdAdd2).subscribe((response) => console.log(response));
   }
 
   removePublication() {
-    this.profileService.removePublication(this.publicationId).subscribe((response) => console.log(response));
+    this.profileService.removePublication(this.publicationIdRemove).subscribe((response) => console.log(response));
   }
 }

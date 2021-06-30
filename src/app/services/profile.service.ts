@@ -66,9 +66,19 @@ export class ProfileService {
     return this.http.patch(this.apiUrl + '/profiledata/', body, this.httpOptions);
   }
 
-  addPublication(publicationId) {
+  addPublication(publicationId1, publicationId2) {
     this.updateTokenInHttpAuthHeader();
-    let body = { publicationId: publicationId };
+    let body = [];
+    if (publicationId1 != "") {
+      body.push(
+        { publicationId: publicationId1, show: true }
+      );
+    }
+    if (publicationId2 != "") {
+      body.push(
+        { publicationId: publicationId2, show: true }
+      );
+    }
     return this.http.post(this.apiUrl + '/publication/', body, this.httpOptions);
   }
 
